@@ -4,7 +4,9 @@
 		<el-header>
 			<NavMenu></NavMenu>
 		</el-header>
-		<el-main>Main</el-main>
+		<el-main>
+      <MainMap></MainMap>
+    </el-main>
 	</el-container>
   </div>
 </template>
@@ -17,7 +19,8 @@ export default {
   	}
   },
   components:{
-	NavMenu: ()=> import("./components/NavMenu.vue")
+	  NavMenu: ()=> import("./components/NavMenu.vue"),
+    MainMap: ()=> import("./components/MainMap.vue")
   },
   methods:{
   },

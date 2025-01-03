@@ -12,16 +12,6 @@ function AllLayer() {
       url_cta_w: 'http://t{s}.tianditu.gov.cn/cta_w/wmts?layer=cta&' + tdtBaseUrl
     }
     const layerList = [
-       {
-        name: '街道',
-        options: {
-            zoomOffset: 0,
-            name: 'mapbox_Image'
-        },
-        list: [
-            { url: tdt.url_open, bUrl: '' },
-        ],
-      },
       {
         name: '街道',
         options: {
@@ -56,6 +46,16 @@ function AllLayer() {
         list: [
           { url: tdt.url_ter_w + defaultTDTKey, bUrl: tdt.url_ter_w },
           { url: tdt.url_cta_w + defaultTDTKey, bUrl: tdt.url_cta_w }
+        ],
+      },
+      {
+        name: '街道',
+        options: {
+            zoomOffset: 0,
+            name: 'mapbox_Image'
+        },
+        list: [
+            { url: tdt.url_open, bUrl: '' },
         ],
       }
     ]

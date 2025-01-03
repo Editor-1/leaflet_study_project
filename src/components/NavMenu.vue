@@ -9,41 +9,47 @@
     active-text-color="#ffd04b">
     <el-submenu index="1">
         <template slot="title">切换底图</template>
-        <el-menu-item index="1-1" @click="setLayer('mapbox_Image')" id="mapbox_Image">加载世界地图</el-menu-item>
-        <el-menu-item index="1-2" @click="setLayer('tiandi_Image')" id="tiandi_Image">加载影像天地图</el-menu-item>
-        <el-menu-item index="1-3" @click="setLayer('tiandi_vec')" id="tiandi_vec">加载矢量天地图</el-menu-item>
-        <el-menu-item index="1-4" @click="setLayer('tiandi_ter')" id="tiandi_ter">加载地形天地图</el-menu-item>
+        <el-menu-item index="1-1" @click="setLayer('tiandi_Image')" id="tiandi_Image">加载影像天地图</el-menu-item>
+        <el-menu-item index="1-2" @click="setLayer('tiandi_vec')" id="tiandi_vec">加载矢量天地图</el-menu-item>
+        <el-menu-item index="1-3" @click="setLayer('tiandi_ter')" id="tiandi_ter">加载地形天地图</el-menu-item>
+        <el-menu-item index="1-4" @click="setLayer('mapbox_Image')" id="mapbox_Image">加载世界地图</el-menu-item>
     </el-submenu>
     
     <el-submenu index="2">
         <template slot="title">图上作业</template>
         <el-menu-item index="2-1" @click="drawPoint()">画点</el-menu-item>
-        <el-menu-item index="2-2" @click="drawArrow()">画线</el-menu-item>
+        <el-menu-item index="2-2" @click="drawLine()">画线</el-menu-item>
         <el-menu-item index="2-3" @click="drawCircle()">画圈</el-menu-item>
         <el-menu-item index="2-4" @click="drawRectangle()">画矩形</el-menu-item>
     </el-submenu>
     
     <el-submenu index="3">
         <template slot="title">地图移动</template>
-        <el-menu-item index="3-1" @click="mapScaling()">地图缩放</el-menu-item>
-        <el-menu-item index="3-2" @click="mapTranslation()">地图平移</el-menu-item>
-        <el-menu-item index="3-3" @click="TransToPoint()">定位平移到位点</el-menu-item>
-        <el-menu-item index="3-4" @click="flyToPoint()">定位飞到位点</el-menu-item>
+        <el-menu-item index="3-1" @click="mapLarge()">地图放大</el-menu-item>
+        <el-menu-item index="3-2" @click="mapDown()">地图缩小</el-menu-item>
+        <el-menu-item index="3-3" @click="mapTranslation()">地图平移</el-menu-item>
+        <el-menu-item index="3-4" @click="transToPoint()">定位平移到位点</el-menu-item>
+        <el-menu-item index="3-5" @click="flyToPoint()">定位飞到位点</el-menu-item>
     </el-submenu>
 
     <el-submenu index="4">
         <template slot="title">图上作业Plus</template>
         <el-menu-item index="4-1" @click="drawLightPoint()">画亮点</el-menu-item>
-        <el-menu-item index="4-2" @click="drawLightCircle()">画亮圆圈</el-menu-item>
+        <el-menu-item index="4-2" @click="clusterPoints()">聚合点位</el-menu-item>
+        <el-menu-item index="4-3" @click="drwaPointPlus()">使用leaflet.draw插件</el-menu-item>
     </el-submenu>
 
-    <el-menu-item index="5">geojson数据绘制边界</el-menu-item>
+    <el-menu-item index="5" @click="drawByGeoJson()">geojson数据绘制边界</el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script>
 import mapLayer from '../leafletMethod/mapLayer'
+import drawHelper from '../leafletMethod/drawHelper'
+import mapAction from '../leafletMethod/mapAction'
+import mapActionByLeafletDraw from '../leafletMethod/mapActionByLeafletDraw'
+import geojsonHelper from '../leafletMethod/geojsonHelper'
 import L from 'leaflet'
 export default {
     name : 'navmenu',
@@ -80,6 +86,45 @@ export default {
         if (!flag) {
           console.error('未找到对应的地图图层');
         }
+      },
+      drawPoint(){
+        drawHelper.drawPoint()
+      },
+      drawLine(){
+        drawHelper.drawLine()
+      },
+      drawCircle(){
+        drawHelper.drwaCircle()
+      },
+      drawRectangle(){
+        drawHelper.drawRectangle()
+      },
+      mapLarge(){
+        mapAction.largeZoom()
+      },
+      mapDown(){
+        mapAction.downZoom()
+      },
+      mapTranslation(){
+        mapAction.mapTranslation()
+      },
+      transToPoint(){
+        mapAction.transToPoint()
+      },
+      flyToPoint(){
+        mapAction.flyToPoint()
+      },
+      drwaPointPlus(){
+        mapActionByLeafletDraw.drwaPointPlus()
+      },
+      drawLightPoint(){
+        mapActionByLeafletDraw.drawLightPoint()
+      },
+      clusterPoints(){
+        mapActionByLeafletDraw.clusterPoints()
+      },
+      drawByGeoJson(){
+        geojsonHelper.loadJsonData()
       }
     }
 }

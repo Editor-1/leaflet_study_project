@@ -13,6 +13,9 @@
     "element-ui": "^2.15.14",
     "jquery": "^3.7.1",
     "leaflet": "^1.9.4",
+    "leaflet-draw": "^1.0.4",
+    "leaflet-pulse-icon": "^0.1.0",
+    "leaflet.markercluster": "^1.5.3",
     "vue": "^2.3.3",
     "vue-router": "^2.6.0"
   },

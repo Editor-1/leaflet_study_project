@@ -12,9 +12,6 @@
         var map = L.map('map').setView([32, 118], 5);
         this.map = map
         window.map = map
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; editor_1_study'
-        }).addTo(this.map);
         var baseLayers = {
             "天地街道图" : L.tileLayer(),
             "天地街道图" : L.tileLayer(),

@@ -40,6 +40,8 @@
     </el-submenu>
 
     <el-menu-item index="5" @click="drawByGeoJson()">geojson数据绘制边界</el-menu-item>
+
+    <el-menu-item index="6" @click="weatherDisplay()">天气气象展示</el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -50,6 +52,7 @@ import drawHelper from '../leafletMethod/drawHelper'
 import mapAction from '../leafletMethod/mapAction'
 import mapActionByLeafletDraw from '../leafletMethod/mapActionByLeafletDraw'
 import geojsonHelper from '../leafletMethod/geojsonHelper'
+import weatherHelper from '../leafletMethod/weatherHelper'
 import L from 'leaflet'
 export default {
     name : 'navmenu',
@@ -83,6 +86,9 @@ export default {
             }
           }
         }
+        const controller = L.control.layers(window.map.baseMaps)
+        controller.addTo(window.map)
+        window.layerControl = controller
         if (!flag) {
           console.error('未找到对应的地图图层');
         }
@@ -125,6 +131,9 @@ export default {
       },
       drawByGeoJson(){
         geojsonHelper.loadJsonData()
+      },
+      weatherDisplay(){
+        weatherHelper.weatherDisplay();
       }
     }
 }

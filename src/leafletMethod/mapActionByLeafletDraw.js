@@ -206,7 +206,8 @@ function clusterPoints(){
     for(let i = 0; i < 1000; i++){
         var lng = getRandomArbitrary(27,35);
         var lat = getRandomArbitrary(112,130);
-        markerClusterLayer.addLayer(L.marker([lng,lat], {icon: pointIcon}))
+        markerClusterLayer.addLayer(L.marker([lng,lat], {icon: pointIcon}).bindPopup('<p>经度：'+ lat  + '</p>'
+          + '<p>纬度：' + lng + '</p>'))
     }
 }
 export default{

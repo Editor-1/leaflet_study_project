@@ -1,0 +1,52 @@
+4LFTX	4层抬升指数（Lifted Index）	K（开尔文）
+ABSV	绝对涡度（Absolute Vorticity）	s⁻¹（每秒）
+ACPCP	累积对流降水量（Convective Precipitation）	kg/m²
+ALBDO	地表反照率（Albedo）	无单位（比例）
+APCP	累积降水量（Total Precipitation）	kg/m²
+CAPE	对流有效位能（Convective Available Potential Energy）	J/kg
+CFRZR	冻雨概率（Freezing Rain Probability）	%
+CICEP	冰粒概率（Ice Pellets Probability）	%
+CIN	对流抑制能量（Convective Inhibition）	J/kg
+CLWMR	云水混合比（Cloud Water Mixing Ratio）	kg/kg
+HGT	高度（Height）	gpm（位势高度）
+TMP	温度（Temperature）	K（开尔文）
+UGRD	东向风速（U-Component of Wind）	m/s
+VGRD	北向风速（V-Component of Wind）	m/s
+PWAT	可降水量（Precipitable Water）	kg/m²
+REFC	复合反射率（Composite Reflectivity）	dBZ（分贝反射率）
+REFD	雷达反射率（Reflectivity）	dBZ（分贝反射率）
+RH	相对湿度（Relative Humidity）	%（百分比）
+RWMR	雨水混合比（Rain Water Mixing Ratio）	kg/kg（千克/千克）
+SFCR	地表粗糙度（Surface Roughness）	m（米）
+SHTFL	感热通量（Sensible Heat Flux）	W/m²（瓦/平方米）
+SNMR	雪混合比（Snow Mixing Ratio）	kg/kg（千克/千克）
+SNOD	积雪深度（Snow Depth）	m（水当量的米）
+SOILL	土壤液态含水量（Soil Liquid Water Content）	kg/m²（千克/平方米）
+SOILW	土壤湿度（Soil Moisture Content）	kg/m²（千克/平方米）
+SOTYP	土壤类型（Soil Type）	分类编号（无单位）
+SPFH	比湿（Specific Humidity）	kg/kg（千克/千克）
+SUNSD	日照时间（Sunshine Duration）	秒
+TCDC	云量总覆盖率（Total Cloud Cover）	%（百分比）
+TMAX	最高温度（Maximum Temperature）	K（开尔文）
+TMIN	最低温度（Minimum Temperature）	K（开尔文）
+TMP	温度（Temperature）	K（开尔文）
+TOZNE	总臭氧（Total Ozone）	DU（Dobson Units，多布森单位）
+TSOIL	土壤温度（Soil Temperature）	K（开尔文）
+UFLX	东向动量通量（Zonal Momentum Flux）	N/m²（牛顿/平方米）
+UGRD	东向风速（U-Component of Wind）	m/s（米/秒）
+U-GWD	东向重力波拖曳（Zonal Gravity Wave Drag）	m/s²（米/秒²）
+ULWRF	向上长波辐射（Outgoing Longwave Radiation）	W/m²（瓦/平方米）
+USTM	东向风暴移动速度（U-Component of Storm Motion）	m/s（米/秒）
+USWRF	向上短波辐射（Upward Shortwave Radiation）	W/m²（瓦/平方米）
+VEG	植被覆盖率（Vegetation Fraction）	%（百分比）
+VFLX	北向动量通量（Meridional Momentum Flux）	N/m²（牛顿/平方米）
+VGRD	北向风速（V-Component of Wind）	m/s（米/秒）
+V-GWD	北向重力波拖曳（Meridional Gravity Wave Drag）	m/s²（米/秒²）
+VIS	能见度（Visibility）	m（米）
+VRATE	沉降速率（Fall Rate）	kg/s（千克/秒）
+VSTM	北向风暴移动速度（V-Component of Storm Motion）	m/s（米/秒）
+VVEL	垂直速度（Vertical Velocity）	Pa/s（帕斯卡/秒）
+VWSH	风切变（Vertical Wind Shear）	m/s（米/秒）
+WATR	水分储量（Water Reservoir Content）	kg/m²（千克/平方米）
+WEASD	积雪水当量（Water Equivalent of Snow Depth）	kg/m²（千克/平方米）
+WILT	土壤萎焉点湿度（Soil Wilting Point）	%（百分比）

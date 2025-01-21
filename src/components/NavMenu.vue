@@ -41,7 +41,25 @@
 
     <el-menu-item index="5" @click="drawByGeoJson()">geojson数据绘制边界</el-menu-item>
 
-    <el-menu-item index="6" @click="weatherDisplay()">天气气象展示</el-menu-item>
+    <el-submenu index="6">
+        <template slot="title">天气气象展示</template>
+        <el-menu-item index="6-1" @click="weatherDisplay()">风向风速温度</el-menu-item>
+        <el-menu-item index="6-2" @click="tempDisplay()">温度气象图</el-menu-item>
+        <el-menu-item index="6-3" @click="initMap()">温度图</el-menu-item>
+    </el-submenu>
+
+    <el-submenu index="7">
+        <template slot="title">geoServer请求</template>
+        <el-menu-item index="7-1" @click="geoServerPot()">请求点</el-menu-item>
+        <el-menu-item index="7-2" @click="geoServerLine()">请求国界线</el-menu-item>
+        <el-menu-item index="7-3" @click="geoServerPolygone()">请求国界面</el-menu-item>
+        <el-menu-item index="7-4" @click="geoServerLayer()">请求图层</el-menu-item>
+    </el-submenu>
+
+    <el-submenu index="8">
+        <template slot="title">cesium</template>
+        <el-menu-item index="8-1" @click="cesuimStart()">地图初始化</el-menu-item>
+    </el-submenu>
     </el-menu>
   </div>
 </template>
@@ -53,7 +71,12 @@ import mapAction from '../leafletMethod/mapAction'
 import mapActionByLeafletDraw from '../leafletMethod/mapActionByLeafletDraw'
 import geojsonHelper from '../leafletMethod/geojsonHelper'
 import weatherHelper from '../leafletMethod/weatherHelper'
+import tempMethod from '../leafletMethod/tempMethod/tempMehtod'
+import geoServerHelper from '../leafletMethod/geoServerHelper'
+import cesuimHelper from '../cesiumMethod/cesuimHelper'
+
 import L from 'leaflet'
+let controllerFlag = false;
 export default {
     name : 'navmenu',
     data() {
@@ -70,7 +93,6 @@ export default {
         if (this.currentLayer) {
           this.currentLayer.forEach(item =>{
             window.map.removeLayer(item);
-            console.log(item)
           })
           this.currentLayer = [[],[]]
         }
@@ -87,8 +109,11 @@ export default {
           }
         }
         const controller = L.control.layers(window.map.baseMaps)
-        controller.addTo(window.map)
-        window.layerControl = controller
+        if(!controllerFlag){
+          controllerFlag = true
+          controller.addTo(window.map)
+          window.layerControl = controller
+        }
         if (!flag) {
           console.error('未找到对应的地图图层');
         }
@@ -134,6 +159,27 @@ export default {
       },
       weatherDisplay(){
         weatherHelper.weatherDisplay();
+      },
+      tempDisplay(){
+        weatherHelper.tempDisplay();
+      },
+      initMap(){
+        tempMethod.initTempMap();
+      },
+      geoServerPot(){
+        geoServerHelper.geoServerPot();
+      },
+      geoServerLine(){
+        geoServerHelper.geoServerLine();
+      },
+      geoServerPolygone(){
+        geoServerHelper.geoServerPolygone();
+      },
+      geoServerLayer(){
+        geoServerHelper.geoServerLayer();
+      },
+      cesuimStart(){
+        cesuimHelper.initMap();
       }
     }
 }

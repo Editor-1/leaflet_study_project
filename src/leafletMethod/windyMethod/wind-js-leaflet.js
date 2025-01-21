@@ -2,6 +2,7 @@
 import Windy from './wind-windy'
 import $ from 'jquery';  
 // shim layer with setTimeout fallback
+//对图层的添加设置延时
 window.requestAnimationFrame = function () {
 	return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) {
 		return window.setTimeout(callback, 1000 / FRAME_RATE);

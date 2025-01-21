@@ -1,15 +1,16 @@
 //这里是windy的一些信息
 let Windy
 Windy = function Windy(params) {
-  var VELOCITY_SCALE = 0.005 * (Math.pow(window.devicePixelRatio, 1 / 3) || 1); // scale for wind velocity (completely arbitrary--this value looks nice)
-  var MIN_TEMPERATURE_K = 261.15; // step size of particle intensity color scale
+  // 风速的缩放比例，调整粒子运动速度
+  var VELOCITY_SCALE = 0.005 * (Math.pow(window.devicePixelRatio, 1 / 3) || 1); 	// window.devicePixelRatio 屏幕分辨率
+  var MIN_TEMPERATURE_K = 261.15; //-273.15 开尔文摄氏度转换
   var MAX_TEMPERATURE_K = 317.15; // wind velocity at which particle intensity is maximum (m/s)
-  var MAX_PARTICLE_AGE = 90; // max number of frames a particle is drawn before regeneration
-  var PARTICLE_LINE_WIDTH = 1; // line width of a drawn particle
-  var PARTICLE_MULTIPLIER = 1 / 200; // particle count scalar (completely arbitrary--this values looks nice)
+  var MAX_PARTICLE_AGE = 90; // 粒子的最大生命周期（帧数）
+  var PARTICLE_LINE_WIDTH = 1; // 绘制的粒子的线宽
+  var PARTICLE_MULTIPLIER = 1 / 200; // 粒子数的缩放比例
   var PARTICLE_REDUCTION = Math.pow(window.devicePixelRatio, 1 / 3) || 1.6; // multiply particle count for mobiles by this amount
   var FRAME_RATE = 15,
-    FRAME_TIME = 1000 / FRAME_RATE; // desired frames per second
+    FRAME_TIME = 1000 / FRAME_RATE; // 动画的帧率（每秒 15 帧）
 
   var NULL_WIND_VECTOR = [NaN, NaN, null]; // singleton for no wind in the form: [u, v, magnitude]
 
@@ -18,8 +19,8 @@ Windy = function Windy(params) {
   var date;
   var λ0, φ0, Δλ, Δφ, ni, nj;
 
-  // interpolation for vectors like wind (u,v,m)
-  var bilinearInterpolateVector = function bilinearInterpolateVector(x, y, g00, g10, g01, g11) {
+  // 实现了风速矢量的双线性插值，用于计算粒子当前位置的风速、风向和温度。 双线性插值计算指定经纬度下的风场矢量。
+  var bilinearInterpolateVector = function interpolatePoint(x, y, g00, g10, g01, g11) {
     var rx = 1 - x;
     var ry = 1 - y;
     var a = rx * ry,
@@ -84,7 +85,7 @@ Windy = function Windy(params) {
     date = new Date(header.refTime);
     date.setHours(date.getHours() + header.forecastTime);
 
-    // Scan mode 0 assumed. Longitude increases from λ0, and latitude decreases from φ0.
+    // 假设扫描模式为0。经度从λ0开始增大，纬度从φ0开始减小。
     // http://www.nco.ncep.noaa.gov/pmb/docs/grib2/grib2_table3-4.shtml
     grid = [];
     var p = 0;
@@ -196,8 +197,8 @@ Windy = function Windy(params) {
     var pλ = project(φ, λ + hλ, windy);
     var pφ = project(φ + hφ, λ, windy);
 
-    // Meridian scale factor (see Snyder, equation 4-3), where R = 1. This handles issue where length of 1º λ
-    // changes depending on φ. Without this, there is a pinching effect at the poles.
+    // 子午线比例因子（参见斯奈德方程 4-3），其中 R = 1。这解决了 1°λ 长度的
+    // 变化取决于φ。如果不这样做，两极就会产生挤压效应。
     var k = Math.cos(φ / 360 * τ);
     return [(pλ[0] - x) / hλ / k, (pλ[1] - y) / hλ / k, (pφ[0] - x) / hφ, (pφ[1] - y) / hφ];
   };
